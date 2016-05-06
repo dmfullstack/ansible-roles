@@ -1,0 +1,5 @@
+---
+- name: install ntp
+  yum: name=ntp state=latest
+- name: start nptd
+  service: name=ntpd state=started enabled=yes

@@ -1,0 +1,8 @@
+---
+- name: install squid
+  yum: name=squid state=latest
+- name: start squid
+  service: name=squid state=started enabled=yes
+- name: configure squid
+  copy: src=files/etc/squid/squid.conf dest=/etc/squid/squid.conf owner=root group=root mode="u=rw,g=r,o="
+  notify: restart squid

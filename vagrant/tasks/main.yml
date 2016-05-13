@@ -1,0 +1,12 @@
+---
+  - name: copy /etc/hosts
+    copy: src=files/etc/hosts dest=/etc/hosts owner=root group=root mode="u=rw,g=r,o=r"
+  - name: copy /etc/yum.repos.d
+    copy: src=files/etc/yum.repos.d/{{ item.src }} dest=/etc/yum.repos.d/{{item.src}}
+    with_items:
+      - { src: CentOS-Base.repo }
+      - { src: CentOS-CR.repo }
+      - { src: CentOS-Debuginfo.repo }
+      - { src: CentOS-Sources.repo }
+      - { src: CentOS-Vault.repo }
+      - { src: CentOS-fasttrack.repo }
